@@ -3,8 +3,14 @@ fn main() {
 }
 
 fn hamming_distance(a: &str, b: &str) -> u32 {
+    let mut result = 0;
+    for (a_char, b_char) in a.chars().zip(b.chars()) {
+        if a_char != b_char {
+            result += 1;
+        }
 
-    unimplemented!();
+    }
+    result
 }
 
 #[cfg(test)]
