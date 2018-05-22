@@ -1,0 +1,7 @@
+[package]
+name = "rc-hamming"
+version = "0.1.0"
+authors = ["Sönke Hahn <soenkehahn@gmail.com>",
+  "Kevin Martin <kevinmartinucr@gmail.com>"]
+
+[dependencies]
