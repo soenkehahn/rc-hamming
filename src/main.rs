@@ -2,7 +2,12 @@ fn main() {
     let _ = hamming_distance("AAA", "GGG");
 }
 
+/// Compute the hamming distance between two strings.
 fn hamming_distance(a: &str, b: &str) -> u32 {
+    if a.len() != b.len() {
+        panic!("Strings are of different length");
+    }
+
     let mut result = 0;
     for (a_char, b_char) in a.chars().zip(b.chars()) {
         if a_char != b_char {
@@ -45,5 +50,17 @@ mod test {
     #[test]
     fn small_distance_in_small_strands() {
         assert_eq!(hamming_distance("AT", "CT"), 1);
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_disallow_first_strand_longer() {
+        hamming_distance("AATG", "AAA");
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_disallow_second_strand_longer() {
+        hamming_distance("ATA", "AGTG");
     }
 }
