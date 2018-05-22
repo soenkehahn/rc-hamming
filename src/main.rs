@@ -13,7 +13,6 @@ fn hamming_distance(a: &str, b: &str) -> u32 {
         if a_char != b_char {
             result += 1;
         }
-
     }
     result
 }
@@ -50,6 +49,41 @@ mod test {
     #[test]
     fn small_distance_in_small_strands() {
         assert_eq!(hamming_distance("AT", "CT"), 1);
+    }
+
+    #[test]
+    fn test_small_distance() {
+        assert_eq!(hamming_distance("GGACG", "GGTCG"), 1);
+    }
+
+    #[test]
+    fn small_distance_in_long_strands() {
+        assert_eq!(hamming_distance("ACCAGGG", "ACTATGG"), 2);
+    }
+
+    #[test]
+    fn non_unique_character_in_first_strand() {
+        assert_eq!(hamming_distance("AAG", "AAA"), 1);
+    }
+
+    #[test]
+    fn non_unique_character_in_second_strand() {
+        assert_eq!(hamming_distance("AAA", "AAG"), 1);
+    }
+
+    #[test]
+    fn same_nucleotides_in_different_positions() {
+        assert_eq!(hamming_distance("TAG", "GAT"), 2);
+    }
+
+    #[test]
+    fn large_distance() {
+        assert_eq!(hamming_distance("GATACA", "GCATAA"), 4);
+    }
+
+    #[test]
+    fn large_distance_in_off_by_one_strand() {
+        assert_eq!(hamming_distance("GGACGGATTCTG", "AGGACGGATTCT"), 9);
     }
 
     #[test]
